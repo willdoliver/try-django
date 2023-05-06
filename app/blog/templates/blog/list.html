@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content%}
+    <div class='row'>
+        {% for obj in object_list %}
+        <!-- <li> <a href="/blog/{{ obj.slug }}">{{ obj.title }}</a></li> -->
+        <!-- <li> <a href="{{ obj.get_absolute_url }}">{{ obj.title }}</a></li> -->
+            {% include 'blog/list-inline.html' with blog_post=obj truncate=True detail=False %}
+        {% endfor %}
+    </div>
+
+{% endblock %}

@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+    db:
+        image: mariadb
+        environment:
+            MYSQL_ROOT_PASSWORD: password
+            MYSQL_DATABASE: mydatabase
+            MYSQL_USER: user
+            MYSQL_PASSWORD: password
+        volumes:
+            - data:/var/lib/mysql
+        ports:
+            - "3306:3306"
+
+    mongo:
+        image: mongo
+        ports:
+            - "27017:27017"
+        volumes:
+            - "./mongo-entrypoint/:/docker-entrypoint-initdb.d/"
+        command: mongod
+
+volumes:
+    data:
